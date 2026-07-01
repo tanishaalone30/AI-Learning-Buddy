@@ -174,7 +174,7 @@ st.markdown(
     """
     <div class="hero">
         <h1>🎓 AI Learning Buddy</h1>
-        <p>Your personal AI tutor — powered by Google Gemini</p>
+        <p>Your personal AI tutor</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -266,10 +266,6 @@ if generate_btn:
                     f'<div class="response-box">{answer}</div>',
                     unsafe_allow_html=True,
                 )
-
-                # Also render with st.markdown for proper markdown formatting
-                with st.expander("📄 View formatted response", expanded=True):
-                    st.markdown(answer)
 
             except Exception as exc:
                 st.error(f"❌ Something went wrong: {exc}")
