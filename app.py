@@ -131,11 +131,6 @@ except Exception as e:
     st.stop()
 
 
-# ─── Session State ───
-if "history" not in st.session_state:
-    st.session_state.history = []
-
-
 # ─── Sidebar ───
 with st.sidebar:
     st.markdown("## ⚙️ Settings")
@@ -152,21 +147,6 @@ with st.sidebar:
         index=0,
     )
 
-    st.divider()
-    st.markdown("## 📜 History")
-
-    if st.session_state.history:
-        for i, item in enumerate(reversed(st.session_state.history[-10:])):
-            with st.expander(f"{'📖' if item['activity']=='Explain Concept' else '🌍' if item['activity']=='Real-Life Example' else '📝' if item['activity']=='Generate Quiz' else '💬'} {item['topic'][:30]}"):
-                st.caption(f"**Activity:** {item['activity']}")
-                st.markdown(item["response"][:300] + ("…" if len(item["response"]) > 300 else ""))
-    else:
-        st.caption("Your learning history will appear here.")
-
-    st.divider()
-    if st.button("🗑️ Clear History"):
-        st.session_state.history = []
-        st.rerun()
 
 
 # ─── Hero Section ───
@@ -174,7 +154,7 @@ st.markdown(
     """
     <div class="hero">
         <h1>🎓 AI Learning Buddy</h1>
-        <p>Your personal AI tutor — powered by Google Gemini</p>
+        <p>Your personal AI tutor</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -261,26 +241,6 @@ if generate_btn:
                         "response": answer,
                     }
                 )
-
-                st.markdown(
-                    f'<div class="response-box">{answer}</div>',
-                    unsafe_allow_html=True,
-                )
-
-                # Also render with st.markdown for proper markdown formatting
-                with st.expander("📄 View formatted response", expanded=True):
-                    st.markdown(answer)
-
-            except Exception as exc:
-                st.error(f"❌ Something went wrong: {exc}")
-
-# ─── Show last response if page re-renders ───
-elif st.session_state.history:
-    last = st.session_state.history[-1]
-    st.markdown("#### 🕘 Last Response")
-    st.caption(f"**Topic:** {last['topic']}  •  **Activity:** {last['activity']}")
-    with st.expander("📄 View response", expanded=False):
-        st.markdown(last["response"])
 
 
 
