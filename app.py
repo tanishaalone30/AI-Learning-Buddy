@@ -229,18 +229,6 @@ if generate_btn:
         )
 
         with st.spinner("✨ Generating your response …"):
-            try:
-                response = model.generate_content(prompt)
-                answer = response.text
-
-                # Save to history
-                st.session_state.history.append(
-                    {
-                        "topic": topic,
-                        "activity": option,
-                        "response": answer,
-                    }
-                )
-
+        
 
 
