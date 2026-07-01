@@ -227,6 +227,4 @@ if generate_btn:
         prompt = ACTIVITIES[option]["prompt"].format(
             topic=topic, level=level, lang=language
         )
-
-with st.spinner("✨ Generating your response …"):
     
