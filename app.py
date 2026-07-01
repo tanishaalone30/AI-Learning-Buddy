@@ -252,4 +252,11 @@ if generate_btn:
 
             except Exception as exc:
                 st.error(f"❌ Something went wrong: {exc}")
-
+                
+# ─── Show last response if page re-renders ───
+elif st.session_state.history:
+    last = st.session_state.history[-1]
+    st.markdown("#### 🕘 Last Response")
+    st.caption(f"**Topic:** {last['topic']}  •  **Activity:** {last['activity']}")
+    with st.expander("📄 View response", expanded=False):
+        st.markdown(last["response"])
