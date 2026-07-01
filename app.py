@@ -228,7 +228,5 @@ if generate_btn:
             topic=topic, level=level, lang=language
         )
 
-    with st.spinner("✨ Generating your response …"):
-        
-
-
+with st.spinner("✨ Generating your response …"):
+    
