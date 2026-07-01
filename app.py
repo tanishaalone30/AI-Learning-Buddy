@@ -227,4 +227,29 @@ if generate_btn:
         prompt = ACTIVITIES[option]["prompt"].format(
             topic=topic, level=level, lang=language
         )
-    
+        with st.spinner("✨ Generating your response …"):
+            try:
+                response = model.generate_content(prompt)
+                answer = response.text
+
+                # Save to history
+                st.session_state.history.append(
+                    {
+                        "topic": topic,
+                        "activity": option,
+                        "response": answer,
+                    }
+                )
+
+                st.markdown(
+                    f'<div class="response-box">{answer}</div>',
+                    unsafe_allow_html=True,
+                )
+
+                # Also render with st.markdown for proper markdown formatting
+                with st.expander("📄 View formatted response", expanded=True):
+                    st.markdown(answer)
+
+            except Exception as exc:
+                st.error(f"❌ Something went wrong: {exc}")
+
