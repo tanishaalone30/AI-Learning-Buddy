@@ -78,4 +78,4 @@ AI learning buddy/
 
 ---
 
-Built with ❤️ by **Tanisha** | Powered by Google Gemini
+Built with ❤️ by **Tanisha** 
