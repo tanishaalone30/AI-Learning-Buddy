@@ -153,7 +153,7 @@ st.markdown(
     """
     <div class="hero">
         <h1>🎓 AI Learning Buddy</h1>
-        <p>Your personal AI tutor — powered by Google Gemini</p>
+        <p>Your personal AI tutor</p>
     </div>
     """,
     unsafe_allow_html=True,
